@@ -16424,8 +16424,8 @@ cr.getObjectRefTable = function () { return [
 	cr.plugins_.Text.prototype.acts.SetText,
 	cr.plugins_.Button.prototype.acts.SetVisible,
 	cr.plugins_.Text.prototype.acts.SetVisible,
-	cr.system_object.prototype.cnds.EveryTick,
 	cr.system_object.prototype.exps.round,
+	cr.system_object.prototype.cnds.EveryTick,
 	cr.plugins_.Button.prototype.acts.SetText,
 	cr.system_object.prototype.exps.floor,
 	cr.plugins_.Button.prototype.cnds.OnClicked
