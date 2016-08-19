@@ -17547,6 +17547,51 @@ cr.plugins_.progressbar = function(runtime)
 	};
 	pluginProto.exps = new Exps();
 }());
+;
+;
+cr.behaviors.NoSave = function(runtime)
+{
+	this.runtime = runtime;
+};
+(function ()
+{
+	var behaviorProto = cr.behaviors.NoSave.prototype;
+	behaviorProto.Type = function(behavior, objtype)
+	{
+		this.behavior = behavior;
+		this.objtype = objtype;
+		this.runtime = behavior.runtime;
+	};
+	var behtypeProto = behaviorProto.Type.prototype;
+	behtypeProto.onCreate = function()
+	{
+	};
+	behaviorProto.Instance = function(type, inst)
+	{
+		this.type = type;
+		this.behavior = type.behavior;
+		this.inst = inst;				// associated object instance to modify
+		this.runtime = type.runtime;
+	};
+	var behinstProto = behaviorProto.Instance.prototype;
+	behinstProto.onCreate = function()
+	{
+		this.myProperty = this.properties[0];
+	};
+	behinstProto.onDestroy = function ()
+	{
+	};
+	behinstProto.tick = function ()
+	{
+		var dt = this.runtime.getDt(this.inst);
+	};
+	function Cnds() {};
+	behaviorProto.cnds = new Cnds();
+	function Acts() {};
+	behaviorProto.acts = new Acts();
+	function Exps() {};
+	behaviorProto.exps = new Exps();
+}());
 cr.getObjectRefTable = function () { return [
 	cr.plugins_.Browser,
 	cr.plugins_.Button,
@@ -17554,9 +17599,9 @@ cr.getObjectRefTable = function () { return [
 	cr.plugins_.progressbar,
 	cr.plugins_.Text,
 	cr.plugins_.TiledBg,
+	cr.behaviors.NoSave,
 	cr.system_object.prototype.cnds.IsGroupActive,
 	cr.system_object.prototype.cnds.OnLoadFinished,
-	cr.system_object.prototype.acts.LoadState,
 	cr.plugins_.progressbar.prototype.acts.SetMaximum,
 	cr.plugins_.progressbar.prototype.acts.SetProgress,
 	cr.plugins_.Button.prototype.acts.SetTooltip,
@@ -17581,5 +17626,6 @@ cr.getObjectRefTable = function () { return [
 	cr.plugins_.Browser.prototype.cnds.OnPageVisible,
 	cr.system_object.prototype.acts.Wait,
 	cr.system_object.prototype.acts.SaveState,
-	cr.system_object.prototype.acts.ResetGlobals
+	cr.system_object.prototype.acts.ResetGlobals,
+	cr.system_object.prototype.acts.LoadState
 ];};
