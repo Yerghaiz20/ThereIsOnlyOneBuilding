@@ -17593,10 +17593,10 @@ cr.behaviors.NoSave = function(runtime)
 	behaviorProto.exps = new Exps();
 }());
 cr.getObjectRefTable = function () { return [
-	cr.plugins_.Browser,
 	cr.plugins_.Button,
-	cr.plugins_.LocalStorage,
+	cr.plugins_.Browser,
 	cr.plugins_.progressbar,
+	cr.plugins_.LocalStorage,
 	cr.plugins_.Text,
 	cr.plugins_.TiledBg,
 	cr.behaviors.NoSave,
@@ -17615,17 +17615,22 @@ cr.getObjectRefTable = function () { return [
 	cr.system_object.prototype.cnds.CompareVar,
 	cr.system_object.prototype.acts.SubVar,
 	cr.plugins_.Text.prototype.acts.SetText,
+	cr.system_object.prototype.cnds.Compare,
+	cr.system_object.prototype.cnds.Else,
 	cr.system_object.prototype.exps.round,
 	cr.system_object.prototype.cnds.EveryTick,
+	cr.system_object.prototype.exps.log10,
 	cr.plugins_.Button.prototype.acts.SetText,
+	cr.system_object.prototype.exps.infinity,
+	cr.plugins_.Button.prototype.acts.SetEnabled,
 	cr.plugins_.Button.prototype.cnds.OnClicked,
 	cr.plugins_.Text.prototype.acts.SetVisible,
 	cr.plugins_.Button.prototype.acts.SetVisible,
 	cr.plugins_.Browser.prototype.cnds.OnPageHidden,
 	cr.system_object.prototype.exps.wallclocktime,
 	cr.plugins_.Browser.prototype.cnds.OnPageVisible,
-	cr.system_object.prototype.acts.Wait,
 	cr.system_object.prototype.acts.SaveState,
+	cr.system_object.prototype.acts.Wait,
 	cr.system_object.prototype.acts.ResetGlobals,
 	cr.system_object.prototype.acts.LoadState
 ];};
